@@ -8,7 +8,7 @@ from __future__ import (absolute_import, division, print_function,
 
 from matplotlib.backends.qt4_compat import QtGui, QtCore
 import numpy as np
-from vistools.qt_widgets.OneDimStack import OneDimStackMainWindow
+from bubblegum.qt_widgets.OneDimStack import OneDimStackMainWindow
 from collections import OrderedDict
 import sys, os
 

@@ -8,7 +8,7 @@ from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
 from matplotlib.backends.qt4_compat import QtGui, QtCore
-from vistools.qt_widgets import common
+from bubblegum.qt_widgets import common
 
 from matplotlib.ticker import NullLocator
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas  # noqa
@@ -251,7 +251,7 @@ class OneDimStackControlWidget(QtGui.QDockWidget):
     Control widget class
 
     TODO: Make this more modular...
-    @tacaswell seemed to be doing this in /vistools/qt_widgets/common.py
+    @tacaswell seemed to be doing this in /bubblegum/qt_widgets/common.py
 
     """
     def __init__(self, name):

@@ -10,11 +10,11 @@ import six
 from matplotlib.backends.qt4_compat import QtGui, QtCore
 import sys
 import os
-from vistools.qt_widgets.stack_scanner import StackScannerMainWindow
+from bubblegum.qt_widgets.stack_scanner import StackScannerMainWindow
 import numpy as np
 from collections import OrderedDict
-from vistools.qt_widgets.OneDimStack import OneDimStackMainWindow
-from nsls2.binary import read_binary
+from bubblegum.qt_widgets.OneDimStack import OneDimStackMainWindow
+from nsls2.io.binary import read_binary
 from nsls2 import core
 
 
