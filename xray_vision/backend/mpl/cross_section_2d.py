@@ -261,23 +261,19 @@ class CrossSection(object):
 
     Parameters
     ----------
-
     fig : matplotlib.figure.Figure
         The figure object to build the class on, will clear
         current contents
-
     cmap : str,  colormap, or None
         color map to use.  Defaults to gray
-
     norm : Normalize or None
        Normalization function to use
-
     limit_func : callable, optional
         function that takes in the image and returns clim values
     auto_redraw : bool, optional
     interpolation : str, optional
         Interpolation method to use. List of valid options can be found in
-        CrossSection2DView.interpolation
+        _INTERPOLATION
 
     Properties
     ----------
@@ -286,9 +282,6 @@ class CrossSection(object):
         of this cross_section_2d module
     cmap : str
         The colormap to use for rendering the image
-
-
-
     """
     def __init__(self, fig, cmap=None, norm=None,
                  limit_func=None, auto_redraw=True, interpolation=None):
@@ -486,11 +479,11 @@ class CrossSection(object):
             self._click_cid = None
             return
 
-        for atr in ('_move_cid', '_clear_cid', '_click_cid'):
-            cid = getattr(self, atr, None)
+        for attr in ('_move_cid', '_clear_cid', '_click_cid'):
+            cid = getattr(self, attr, None)
             if cid is not None:
                 self._fig.canvas.mpl_disconnect(cid)
-                setattr(self, atr, None)
+                setattr(self, attr, None)
 
         # clean up the cursor
         if self._cur is not None:
