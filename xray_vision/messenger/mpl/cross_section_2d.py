@@ -60,19 +60,16 @@ class CrossSection2DMessenger(AbstractMessenger2D, AbstractMPLMessenger):
     to pass commands down to the gui-independent layer
     """
 
-    def __init__(self, data_list, key_list, parent=None, *args, **kwargs):
+    def __init__(self, parent=None, *args, **kwargs):
         # call up the inheritance chain
         super(CrossSection2DMessenger, self).__init__(*args, **kwargs)
         # init the appropriate view
-        self._view = CrossSection2DView(fig=self._fig, data_list=data_list,
-                                        key_list=key_list)
-
-        # TODO: Address issue of data storage in the cross section widget
-        self._ctrl_widget = CrossSection2DControlWidget(name="2-D CrossSection"
-                                                             " Controls",
-                                                        init_img=data_list[0],
-                                                        num_images=len(
-                                                            key_list))
+        self._view = CrossSection2DView(fig=self._fig)
+        self._ctrl_widget = CrossSection2DControlWidget(
+            name="2-D CrossSection Controls",
+            init_img=np.random.random((100,100)),
+            num_images=1
+        )
         # connect signals to slots
         self.connect_sigs_to_slots()
 

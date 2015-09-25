@@ -93,8 +93,7 @@ class StackExplorer(QtGui.QMainWindow):
         QtGui.QMainWindow.__init__(self, parent=parent)
         self.setWindowTitle('StackExplorer')
         key_list, data_list = data_gen(25)
-        self._main_window = CrossSectionMainWindow(data_list=data_list,
-                                                   key_list=key_list)
+        self._main_window = CrossSectionMainWindow()
 
         self._main_window.setFocus()
         self.setCentralWidget(self._main_window)

@@ -42,20 +42,27 @@ from ..messenger.mpl.cross_section_2d import CrossSection2DMessenger
 import logging
 logger = logging.getLogger(__name__)
 
+from matplotlib.backends.backend_qt5 import _create_qApp
+
+
 class CrossSectionMainWindow(QtGui.QMainWindow):
-    """
-    MainWindow
+    """Create a cross section Qt widget without data.
+
+    Example
+    -------
+    from xray_vision.qt_widgets import CrossSectionMainWindow
+    mw = CrossSectionMainWindow()
+
     """
 
-    def __init__(self, title=None, parent=None,
-                 data_list=None, key_list=None):
+    def __init__(self, title=None, parent=None):
+        _create_qApp()
         QtGui.QMainWindow.__init__(self, parent)
         if title is None:
             title = "2D Cross Section"
         self.setWindowTitle(title)
         # create view widget, control widget and messenger pass-through
-        self._messenger = CrossSection2DMessenger(data_list=data_list,
-                                                  key_list=key_list)
+        self._messenger = CrossSection2DMessenger()
 
         self._ctrl_widget = self._messenger._ctrl_widget
         self._display = self._messenger._display

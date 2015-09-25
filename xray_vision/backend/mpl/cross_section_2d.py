@@ -144,7 +144,7 @@ _INTERPOLATION = ['none', 'nearest', 'bilinear', 'bicubic', 'spline16',
                   'sinc', 'lanczos']
 
 
-class CrossSection2DView(AbstractDataView2D, AbstractMPLDataView):
+class CrossSection2DView(AbstractMPLDataView):
     """
     CrossSection2DView docstring
 
@@ -153,7 +153,7 @@ class CrossSection2DView(AbstractDataView2D, AbstractMPLDataView):
     # the default value.
     interpolation = _INTERPOLATION
 
-    def __init__(self, fig, data_list, key_list, cmap=None, norm=None,
+    def __init__(self, fig, cmap=None, norm=None,
                  limit_func=None, interpolation=None, **kwargs):
         """
         Sets up figure with cross section viewer
@@ -177,9 +177,7 @@ class CrossSection2DView(AbstractDataView2D, AbstractMPLDataView):
         if 'limit_args' in kwargs:
             raise Exception("changed API, don't use limit_args anymore, use closures")
         # call up the inheritance chain
-        super(CrossSection2DView, self).__init__(fig=fig, data_list=data_list,
-                                                 key_list=key_list, norm=norm,
-                                                 cmap=cmap)
+        super(CrossSection2DView, self).__init__(fig=fig, norm=norm, cmap=cmap)
         self._xsection = CrossSection(fig,
                                       cmap=self._cmap, norm=self._norm,
                                       limit_func=limit_func,
@@ -188,8 +186,8 @@ class CrossSection2DView(AbstractDataView2D, AbstractMPLDataView):
     def update_cmap(self, cmap):
         self._xsection.update_cmap(cmap)
 
-    def update_image(self, img_idx):
-        self._xsection.update_image(self._data_dict[self._key_list[img_idx]])
+    def update_image(self, image):
+        self._xsection.update_image(image)
 
     def replot(self):
         """
